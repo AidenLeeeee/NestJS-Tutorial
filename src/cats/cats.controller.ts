@@ -1,12 +1,7 @@
 import {
   Controller,
-  Delete,
   Get,
-  Param,
-  ParseIntPipe,
-  Patch,
   Post,
-  Put,
   UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
@@ -21,35 +16,27 @@ export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Get()
-  getAllCat() {
-    console.log('hello controller');
-    return { cats: 'get all cats api' };
-  }
-
-  @Get(':id')
-  getOneCat(@Param('id', ParseIntPipe) id: number) {
-    console.log(id);
-    console.log(typeof id);
-    return 'one cat';
+  getCurrentCat() {
+    return 'current cat';
   }
 
   @Post()
-  createOneCat() {
-    return 'create cat';
+  async signUp() {
+    return 'signup';
   }
 
-  @Put(':id')
-  updateOneCat() {
-    return 'update cat';
+  @Post('login')
+  logIn() {
+    return 'login';
   }
 
-  @Patch(':id')
-  updateOneCatPartially() {
-    return 'update cat partially';
+  @Post('logout')
+  logout() {
+    return 'logout';
   }
 
-  @Delete(':id')
-  deleteOneCat() {
-    return 'delete cat';
+  @Post('upload/cats')
+  uploadCatImg() {
+    return 'uploadImg';
   }
 }
